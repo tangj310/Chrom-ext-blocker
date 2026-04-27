@@ -3,6 +3,8 @@ let styleEl = null;
 let ytInterval = null;
 let ytObserver = null;
 let preAdPlaybackRate = 1;
+let preAdMuted = false;
+let debounceTimer = null;
 
 const AD_CSS = `
   ins.adsbygoogle,
@@ -68,6 +70,7 @@ function remove() {
   if (styleEl) { styleEl.remove(); styleEl = null; }
   if (ytInterval) { clearInterval(ytInterval); ytInterval = null; }
   if (ytObserver) { ytObserver.disconnect(); ytObserver = null; }
+  if (debounceTimer) { clearTimeout(debounceTimer); debounceTimer = null; }
 }
 
 function injectCSS() {
@@ -80,21 +83,24 @@ function injectCSS() {
 function startYouTubeSkip() {
   if (ytInterval) return;
 
-  // MutationObserver fires the moment YouTube adds/removes the ad-showing class,
-  // giving near-instant reaction without waiting for the next poll cycle.
-  ytObserver = new MutationObserver(handleYouTubeAd);
+  // Debounced observer so bursts of DOM changes don't trigger dozens of
+  // simultaneous handleYouTubeAd calls, which could conflict with each other.
+  ytObserver = new MutationObserver(() => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(handleYouTubeAd, 30);
+  });
   ytObserver.observe(document.documentElement, {
     subtree: true,
     attributes: true,
     attributeFilter: ['class']
   });
 
-  // Polling as a safety net (catches cases the observer misses).
+  // Polling backup.
   ytInterval = setInterval(handleYouTubeAd, 50);
 }
 
 function handleYouTubeAd() {
-  // Priority 1: click skip button the instant it appears.
+  // Priority 1: click the skip button the instant it appears.
   const skipBtn = document.querySelector(
     '.ytp-skip-ad-button, .ytp-ad-skip-button-container button, .ytp-ad-skip-button'
   );
@@ -107,18 +113,23 @@ function handleYouTubeAd() {
   const adPlaying = !!document.querySelector('.ad-showing');
 
   if (adPlaying && video) {
-    // Save the user's normal playback rate the first time we detect an ad.
+    // First frame of ad: save the user's normal state.
     if (video.playbackRate !== 16) {
       preAdPlaybackRate = video.playbackRate || 1;
+      preAdMuted = video.muted;
+      video.muted = true; // silence the fast-forwarded ad audio
     }
-    // Fast-forward through the ad at 16x — works even when seeking is blocked.
+    // Fast-forward at 16x — plays buffered content without causing black screens.
+    // Deliberately NOT seeking to video.duration: seeking an unbuffered position
+    // is what causes the black screen / stuck state.
     video.playbackRate = 16;
-    // Also try seeking to the end; if YouTube allows it the ad ends immediately.
-    if (video.duration && !isNaN(video.duration) && video.duration > 0) {
-      video.currentTime = video.duration;
-    }
+
+    // If the video got stuck/paused during the ad, resume it.
+    if (video.paused) video.play().catch(() => {});
+
   } else if (!adPlaying && video && video.playbackRate === 16) {
-    // Ad finished — restore the user's original playback speed.
+    // Ad ended — restore the user's original playback state.
     video.playbackRate = preAdPlaybackRate;
+    video.muted = preAdMuted;
   }
 }

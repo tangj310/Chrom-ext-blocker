@@ -93,5 +93,5 @@ function startYouTubeSkip() {
         video.currentTime = video.duration;
       }
     }
-  }, 300);
+  }, 50);
 }

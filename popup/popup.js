@@ -1,4 +1,4 @@
-const CATEGORIES = ['adult', 'gambling', 'social', 'entertainment'];
+const CATEGORIES = ['adult', 'gambling', 'social', 'entertainment', 'ads'];
 
 document.addEventListener('DOMContentLoaded', async () => {
   const { categories = {}, customRules = [] } = await chrome.storage.local.get(['categories', 'customRules']);

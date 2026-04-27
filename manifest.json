@@ -37,9 +37,21 @@
         "id": "entertainment_rules",
         "enabled": false,
         "path": "rules/entertainment.json"
+      },
+      {
+        "id": "ads_rules",
+        "enabled": false,
+        "path": "rules/ads.json"
       }
     ]
   },
+  "content_scripts": [
+    {
+      "matches": ["<all_urls>"],
+      "js": ["content/cosmetic.js"],
+      "run_at": "document_start"
+    }
+  ],
   "web_accessible_resources": [
     {
       "resources": ["blocked.html"],

@@ -91,10 +91,17 @@ body {
 .dot-orange { background: #f97316; }
 .dot-blue   { background: #3b82f6; }
 .dot-purple { background: #8b5cf6; }
+.dot-green  { background: #22c55e; }
 
 .category-label {
   font-size: 14px;
   color: #374151;
+}
+
+.category-desc {
+  font-size: 11px;
+  color: #9ca3af;
+  margin-top: 2px;
 }
 
 /* Toggle switch */

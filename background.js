@@ -1,4 +1,4 @@
-const CATEGORIES = ['adult', 'gambling', 'social', 'entertainment'];
+const CATEGORIES = ['adult', 'gambling', 'social', 'entertainment', 'ads'];
 
 chrome.runtime.onInstalled.addListener(syncState);
 chrome.runtime.onStartup.addListener(syncState);

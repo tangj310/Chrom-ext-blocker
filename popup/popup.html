@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Focus Guard</title>
+  <link rel="stylesheet" href="popup.css">
+</head>
+<body>
+  <div class="header">
+    <div class="logo">
+      <svg viewBox="0 0 24 24" fill="#4a6cf7" width="22" height="22">
+        <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/>
+      </svg>
+    </div>
+    <div>
+      <h1>Focus Guard</h1>
+      <p class="subtitle">Block distracting websites</p>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Block by Category</div>
+
+    <div class="category-item">
+      <div class="category-info">
+        <div class="category-dot dot-red"></div>
+        <span class="category-label">Adult Content</span>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="cat-adult" data-category="adult">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="category-item">
+      <div class="category-info">
+        <div class="category-dot dot-orange"></div>
+        <span class="category-label">Gambling</span>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="cat-gambling" data-category="gambling">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="category-item">
+      <div class="category-info">
+        <div class="category-dot dot-blue"></div>
+        <span class="category-label">Social Media</span>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="cat-social" data-category="social">
+        <span class="slider"></span>
+      </label>
+    </div>
+
+    <div class="category-item">
+      <div class="category-info">
+        <div class="category-dot dot-purple"></div>
+        <span class="category-label">Entertainment &amp; Streaming</span>
+      </div>
+      <label class="toggle">
+        <input type="checkbox" id="cat-entertainment" data-category="entertainment">
+        <span class="slider"></span>
+      </label>
+    </div>
+  </div>
+
+  <div class="section">
+    <div class="section-title">Block Custom Website</div>
+    <div class="input-row">
+      <input type="text" id="urlInput" placeholder="e.g., example.com" autocomplete="off" spellcheck="false">
+      <button id="addBtn">Block</button>
+    </div>
+    <div id="errorMsg" class="error-msg"></div>
+    <div id="customList"></div>
+  </div>
+
+  <script src="popup.js"></script>
+</body>
+</html>

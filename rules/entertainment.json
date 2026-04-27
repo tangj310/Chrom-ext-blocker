@@ -1,0 +1,17 @@
+[
+  {"id": 1,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||youtube.com",         "resourceTypes": ["main_frame"]}},
+  {"id": 2,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||netflix.com",         "resourceTypes": ["main_frame"]}},
+  {"id": 3,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||hulu.com",            "resourceTypes": ["main_frame"]}},
+  {"id": 4,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||twitch.tv",           "resourceTypes": ["main_frame"]}},
+  {"id": 5,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||disneyplus.com",      "resourceTypes": ["main_frame"]}},
+  {"id": 6,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||primevideo.com",      "resourceTypes": ["main_frame"]}},
+  {"id": 7,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||max.com",             "resourceTypes": ["main_frame"]}},
+  {"id": 8,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||peacocktv.com",       "resourceTypes": ["main_frame"]}},
+  {"id": 9,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||paramountplus.com",   "resourceTypes": ["main_frame"]}},
+  {"id": 10, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||crunchyroll.com",     "resourceTypes": ["main_frame"]}},
+  {"id": 11, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||funimation.com",      "resourceTypes": ["main_frame"]}},
+  {"id": 12, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||spotify.com",         "resourceTypes": ["main_frame"]}},
+  {"id": 13, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||soundcloud.com",      "resourceTypes": ["main_frame"]}},
+  {"id": 14, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||pandora.com",         "resourceTypes": ["main_frame"]}},
+  {"id": 15, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||deezer.com",          "resourceTypes": ["main_frame"]}}
+]

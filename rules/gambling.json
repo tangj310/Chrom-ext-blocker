@@ -1,0 +1,22 @@
+[
+  {"id": 1,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||bet365.com",         "resourceTypes": ["main_frame"]}},
+  {"id": 2,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||draftkings.com",      "resourceTypes": ["main_frame"]}},
+  {"id": 3,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||fanduel.com",         "resourceTypes": ["main_frame"]}},
+  {"id": 4,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||bovada.lv",           "resourceTypes": ["main_frame"]}},
+  {"id": 5,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||pokerstars.com",      "resourceTypes": ["main_frame"]}},
+  {"id": 6,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||888casino.com",       "resourceTypes": ["main_frame"]}},
+  {"id": 7,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||casumo.com",          "resourceTypes": ["main_frame"]}},
+  {"id": 8,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||betway.com",          "resourceTypes": ["main_frame"]}},
+  {"id": 9,  "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||williamhill.com",     "resourceTypes": ["main_frame"]}},
+  {"id": 10, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||paddypower.com",      "resourceTypes": ["main_frame"]}},
+  {"id": 11, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||betfair.com",         "resourceTypes": ["main_frame"]}},
+  {"id": 12, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||1xbet.com",           "resourceTypes": ["main_frame"]}},
+  {"id": 13, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||bwin.com",            "resourceTypes": ["main_frame"]}},
+  {"id": 14, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||ladbrokes.com",       "resourceTypes": ["main_frame"]}},
+  {"id": 15, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||unibet.com",          "resourceTypes": ["main_frame"]}},
+  {"id": 16, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||betsson.com",         "resourceTypes": ["main_frame"]}},
+  {"id": 17, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||leovegas.com",        "resourceTypes": ["main_frame"]}},
+  {"id": 18, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||casino.com",          "resourceTypes": ["main_frame"]}},
+  {"id": 19, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||jackpotcity.com",     "resourceTypes": ["main_frame"]}},
+  {"id": 20, "priority": 1, "action": {"type": "redirect", "redirect": {"extensionPath": "/blocked.html"}}, "condition": {"urlFilter": "||mrgreen.com",         "resourceTypes": ["main_frame"]}}
+]

@@ -1,0 +1,49 @@
+{
+  "manifest_version": 3,
+  "name": "ad_blocker",
+  "version": "1.0.0",
+  "description": "Block websites by category or custom URL to stay focused",
+  "permissions": [
+    "declarativeNetRequest",
+    "storage",
+    "tabs"
+  ],
+  "host_permissions": ["<all_urls>"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_popup": "popup/popup.html",
+    "default_title": "Focus Guard"
+  },
+  "declarative_net_request": {
+    "rule_resources": [
+      {
+        "id": "adult_rules",
+        "enabled": false,
+        "path": "rules/adult.json"
+      },
+      {
+        "id": "gambling_rules",
+        "enabled": false,
+        "path": "rules/gambling.json"
+      },
+      {
+        "id": "social_rules",
+        "enabled": false,
+        "path": "rules/social.json"
+      },
+      {
+        "id": "entertainment_rules",
+        "enabled": false,
+        "path": "rules/entertainment.json"
+      }
+    ]
+  },
+  "web_accessible_resources": [
+    {
+      "resources": ["blocked.html"],
+      "matches": ["<all_urls>"]
+    }
+  ]
+}

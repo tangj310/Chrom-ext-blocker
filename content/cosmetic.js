@@ -1,6 +1,8 @@
 let enabled = false;
 let styleEl = null;
 let ytInterval = null;
+let ytObserver = null;
+let preAdPlaybackRate = 1;
 
 const AD_CSS = `
   ins.adsbygoogle,
@@ -65,6 +67,7 @@ function apply() {
 function remove() {
   if (styleEl) { styleEl.remove(); styleEl = null; }
   if (ytInterval) { clearInterval(ytInterval); ytInterval = null; }
+  if (ytObserver) { ytObserver.disconnect(); ytObserver = null; }
 }
 
 function injectCSS() {
@@ -76,22 +79,46 @@ function injectCSS() {
 
 function startYouTubeSkip() {
   if (ytInterval) return;
-  ytInterval = setInterval(() => {
-    // Click the skip button if it's available
-    const skipBtn = document.querySelector(
-      '.ytp-skip-ad-button, .ytp-ad-skip-button-container button, .ytp-ad-skip-button'
-    );
-    if (skipBtn) {
-      skipBtn.click();
-      return;
-    }
 
-    // If an ad is actively playing and no skip button, seek past it
-    if (document.querySelector('.ad-showing')) {
-      const video = document.querySelector('video');
-      if (video && video.duration && !isNaN(video.duration) && video.duration > 0) {
-        video.currentTime = video.duration;
-      }
+  // MutationObserver fires the moment YouTube adds/removes the ad-showing class,
+  // giving near-instant reaction without waiting for the next poll cycle.
+  ytObserver = new MutationObserver(handleYouTubeAd);
+  ytObserver.observe(document.documentElement, {
+    subtree: true,
+    attributes: true,
+    attributeFilter: ['class']
+  });
+
+  // Polling as a safety net (catches cases the observer misses).
+  ytInterval = setInterval(handleYouTubeAd, 50);
+}
+
+function handleYouTubeAd() {
+  // Priority 1: click skip button the instant it appears.
+  const skipBtn = document.querySelector(
+    '.ytp-skip-ad-button, .ytp-ad-skip-button-container button, .ytp-ad-skip-button'
+  );
+  if (skipBtn) {
+    skipBtn.click();
+    return;
+  }
+
+  const video = document.querySelector('video');
+  const adPlaying = !!document.querySelector('.ad-showing');
+
+  if (adPlaying && video) {
+    // Save the user's normal playback rate the first time we detect an ad.
+    if (video.playbackRate !== 16) {
+      preAdPlaybackRate = video.playbackRate || 1;
     }
-  }, 50);
+    // Fast-forward through the ad at 16x — works even when seeking is blocked.
+    video.playbackRate = 16;
+    // Also try seeking to the end; if YouTube allows it the ad ends immediately.
+    if (video.duration && !isNaN(video.duration) && video.duration > 0) {
+      video.currentTime = video.duration;
+    }
+  } else if (!adPlaying && video && video.playbackRate === 16) {
+    // Ad finished — restore the user's original playback speed.
+    video.playbackRate = preAdPlaybackRate;
+  }
 }
